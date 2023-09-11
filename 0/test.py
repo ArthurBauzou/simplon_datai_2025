@@ -26,7 +26,7 @@ def randomname() :
     return new_first_name + " " + new_last_name
 
 def majusculator(str) :
-    words = str.split()
+    words = str.split(' ')
     capitalised_name = ""
     for word in words:
         capital_letter = word[0].upper()
