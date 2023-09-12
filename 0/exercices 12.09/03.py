@@ -16,7 +16,7 @@ test_list = [
 
 def only_vowel(word_list:list):
     res = []
-    vowels = ("a","e","i","o","u","à","é","è","ê","œ","ï","â")
+    vowels = ("a","e","i","o","u","y","à","é","è","ê","œ","ï","â")
     for word in word_list :
         if word[0].lower() in vowels : res.append(word)
 
