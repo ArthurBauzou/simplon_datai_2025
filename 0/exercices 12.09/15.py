@@ -3,8 +3,12 @@ pal_string = "Ésope reste ici et se repose"
 
 def normalize(string:str) :
     replace_accents = {
-        'e': ['é', 'è', 'ê'],
-        'a': ['à', 'â']
+        'e': ['é', 'è', 'ê', 'ë'],
+        'a': ['à', 'â'],
+        'i': ['ï', 'î'],
+        'u': ['û', 'ù'],
+        'o': ['ô', 'ö'],
+        'c': ['ç']
     }
 
     res = string.lower()
