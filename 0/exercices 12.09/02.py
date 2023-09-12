@@ -5,7 +5,7 @@ test_list = [
 def only_pos(number_list:list) :
     res = []
     for number in number_list :
-        if number > 0 : res.append(el)
+        if number > 0 : res.append(number)
 
     return res
 
