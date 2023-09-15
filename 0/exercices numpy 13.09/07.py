@@ -1,10 +1,11 @@
 import numpy as np
 
-liste = np.arange(0,40,2)
-signal = np.random.randn(1000)
+# liste = np.array([[1,2,3],[4,5,6]])
+liste = np.array([0,1,2,3,50,3,2,1,0])
+print(liste)
+# signal = np.random.randn(1000)
 
-
-def batch_calculator(arr):
+def calculator(arr):
     fonctions = {
         "moyenne" : np.mean, 
         "médiane" : np.median, 
@@ -17,6 +18,6 @@ def batch_calculator(arr):
 
     return res
 
-print(batch_calculator(liste))
+print(calculator(liste))
 print("–––")
-print(batch_calculator(signal))
+# print(calculator(signal))
