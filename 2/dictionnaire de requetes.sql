@@ -91,3 +91,71 @@ p.prix AS 'prix unitaire HT'
 FROM produit AS p
 JOIN famille AS f ON p.fam_id = f.fam_id
 JOIN condit AS c ON p.cond_id = c.cond_id;
+
+------------------
+-- TABLE SALES01 --
+------------------
+
+-- 1 CREATION
+---------------------
+
+-- créer la table des catégories
+CREATE TABLE category (
+    cat_id UNSIGNED TINYINT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL UNIQUE
+)
+
+-- créer la table des sous-categories
+CREATE TABLE sub_category (
+    sub_id UNSIGNED SMALLINT PRIMARY KEY,
+    cat_id TINYINT NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    FOREIGN KEY (cat_id) REFERENCES category(cat_id)
+)
+
+-- créer la table des produits
+CREATE TABLE product (
+    prod_id UNSIGNED MEDIUMINT PRIMARY KEY,
+    sub_id UNSIGNED SMALLINT NOT NULL,
+    name VARCHAR(40) NOT NULL,
+    unit_price UNSIGNED MEDIUMINT,
+    unit_cost UNSIGNED MEDIUMINT,
+    FOREIGN KEY (sub_id) REFERENCES sub_category(sub_id)
+)
+
+-- créer la table des pays
+CREATE TABLE country (
+    co_id UNSIGNED SMALLINT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL UNIQUE
+)
+
+-- créer la table des régions
+CREATE TABLE region (
+    reg_id UNSIGNED SMALLINT PRIMARY KEY,
+    co_id UNSIGNED SMALLINT,
+    name VARCHAR(30) NOT NULL UNIQUE,
+    FOREIGN KEY (co_id) REFERENCES country(co_id)
+)
+
+-- créer la table des clients
+CREATE TABLE customer (
+    cust_id UNSIGNED INT PRIMARY KEY,
+    reg_id UNSIGNED SMALLINT,
+    fisrt_name VARCHAR(30),
+    last_name VARCHAR(30),
+    age UNSIGNED TINYINT,
+    genre VARCHAR(1),
+    FOREIGN KEY (reg_id) REFERENCES region(reg_id)
+)
+
+-- créer la table des ventes
+CREATE TABLE sales (
+    sale_id UNSIGNED INT PRIMARY KEY AUTO_INCREMENT,
+    cust_id UNSIGNED INT,
+    prod_id UNSIGNED MEDIUMINT,
+    sale_date DATE NOT NULL,
+    quantity UNSIGNED SMALLINT,
+    revenue UNSIGNED INT,
+    FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
+    FOREIGN KEY (prod_id) REFERENCES product(prod_id)
+)
