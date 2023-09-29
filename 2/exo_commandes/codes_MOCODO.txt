@@ -1,0 +1,60 @@
+https://www.mocodo.net/
+
+––––––––––––––––––––––––––––––
+Modèle Conceptuel des Données
+––––––––––––––––––––––––––––––
+
+CATEGORIE: categorie_id, nom
+APPARTIENT, 11 PRODUIT, 1N CATEGORIE
+PRODUIT: produit_id, prix, nom
+COMPORTENT, 1N COMMANDE, 0N PRODUIT: nbr
+
+REÇOIT, 0N MAGASIN, 11 COMMANDE
+COMMANDE: commande_id, date
+
+RESIDE2, 0N VILLE, 11 MAGASIN
+MAGASIN: magasin_id, adresse
+PASSE, 0N COMMANDE, 11 CLIENT
+
+VILLE: ville_id, nom
+RESIDE, 0N VILLE, 11 CLIENT
+CLIENT: client_id, nom, adresse
+
+SE_SITUE, 1N PAYS, 11 VILLE
+PAYS: pays_id, nom
+
+
+––––––––––––––––––––––––––––––
+Modèle Logique des Données
+––––––––––––––––––––––––––––––
+
+%%mocodo
+:
+CATEGORIE: categorie_id, nom
+:::
+PRODUIT: produit_id, prix, nom, #categorie_id->CATEGORIE->categorie_id
+:
+COMPORTENT: #commande_id->COMMANDE->commande_id, _#produit_id->PRODUIT->produit_id, nbr
+:
+
+
+:::::
+COMMANDE: commande_id, date, #magasin_id->MAGASIN->magasin_id
+:::
+
+
+:::
+MAGASIN: magasin_id, adresse, #ville_id->VILLE->ville_id
+:::::
+
+
+:
+VILLE: ville_id, nom, #pays_id->PAYS->pays_id
+:::
+CLIENT: client_id, nom, adresse, #commande_id->COMMANDE->commande_id, #ville_id->VILLE->ville_id
+:::
+
+
+:::::
+PAYS: pays_id, nom
+:::

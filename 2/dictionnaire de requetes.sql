@@ -109,7 +109,7 @@ CREATE TABLE category (
 CREATE TABLE sub_category (
     sub_id UNSIGNED SMALLINT PRIMARY KEY,
     cat_id TINYINT NOT NULL,
-    name VARCHAR(30) NOT NULL,
+    sub_category VARCHAR(30) NOT NULL,
     FOREIGN KEY (cat_id) REFERENCES category(cat_id)
 )
 
@@ -117,7 +117,7 @@ CREATE TABLE sub_category (
 CREATE TABLE product (
     prod_id UNSIGNED MEDIUMINT PRIMARY KEY,
     sub_id UNSIGNED SMALLINT NOT NULL,
-    name VARCHAR(40) NOT NULL,
+    product_name VARCHAR(40) NOT NULL,
     unit_price UNSIGNED MEDIUMINT,
     unit_cost UNSIGNED MEDIUMINT,
     FOREIGN KEY (sub_id) REFERENCES sub_category(sub_id)
@@ -126,14 +126,14 @@ CREATE TABLE product (
 -- créer la table des pays
 CREATE TABLE country (
     co_id UNSIGNED SMALLINT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL UNIQUE
+    country_name VARCHAR(30) NOT NULL UNIQUE
 )
 
 -- créer la table des régions
 CREATE TABLE region (
     reg_id UNSIGNED SMALLINT PRIMARY KEY,
     co_id UNSIGNED SMALLINT,
-    name VARCHAR(30) NOT NULL UNIQUE,
+    region_name VARCHAR(30) NOT NULL UNIQUE,
     FOREIGN KEY (co_id) REFERENCES country(co_id)
 )
 
