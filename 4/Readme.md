@@ -19,7 +19,7 @@ Afin de se familiariser avec cette approche et mieux l'appréhender pour l'utili
 Question de veilles:
 
 * Qu'est ce que le clustering ?
-* Est ce un problème difficile  ? pourquoi ? Donnez la complexité en temps et mémoire 
+* Est ce un problème difficile ? pourquoi ? Donnez la complexité en temps et mémoire 
 * Quelle sont les métriques utilisés pour le clustering ?
 * Écrivez en une phrase votre compréhension pour 3 métrique avec ground truth (dont MNI) 3 sans ground truth (dont silhouette)
 	* donner en une phrase l'intuition derrière ces mesures.
